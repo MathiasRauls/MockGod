@@ -23,6 +23,25 @@ const Customizer = () => {
         stylishShirt: false,
     });
 
+    // Create a reference to the editor tabs container
+    const editorTabsContainerRef = useRef();
+
+    useEffect(() => {
+        // Function to check if click is outside of Editor Tabs
+        const handleClickOutside = (event) => {
+            if (editorTabsContainerRef.current && !editorTabsContainerRef.current.contains(event.target)) {
+                setActiveEditorTab(null);
+            }
+        };
+
+        // Add the event listener when mounting
+        document.addEventListener('mousedown', handleClickOutside);
+        // Clean up the event listener on unmounting
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     // Show Tab Content Depending on Active tab
     const generateTabContent = () => {
         switch (activeEditorTab) {

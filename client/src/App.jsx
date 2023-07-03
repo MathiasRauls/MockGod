@@ -10,8 +10,8 @@ function App() {
   return (
     <main className="app transition-all ease-in">
       <Home />
-      <Canvas setActiveEditorTab={setActiveEditorTab} />
-      <Customizer activeEditorTab={activeEditorTab} setActiveEditorTab={setActiveEditorTab} />
+      <Canvas />
+      <Customizer />
     </main>
   )
 }
